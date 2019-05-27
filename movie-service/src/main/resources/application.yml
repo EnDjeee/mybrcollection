@@ -1,0 +1,10 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/mybrcollection?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+    password: br12345
+    username: matteo
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update

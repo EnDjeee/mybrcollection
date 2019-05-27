@@ -1,0 +1,7 @@
+com/matteo/mybrcollection/MyBrCollectionApplication.class
+com/matteo/mybrcollection/controller/MovieController.class
+com/matteo/mybrcollection/repository/MovieRepository.class
+com/matteo/mybrcollection/model/Director.class
+com/matteo/mybrcollection/repository/DirectorRepository.class
+com/matteo/mybrcollection/model/Movie.class
+com/matteo/mybrcollection/exception/BadRequestException.class
