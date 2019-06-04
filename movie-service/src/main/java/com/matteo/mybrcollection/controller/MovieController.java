@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 @Transactional
@@ -32,6 +34,7 @@ public class MovieController {
     @PostMapping("/add")
     public ResponseEntity<?> addMovie(@RequestParam String name, @RequestParam Integer year, @RequestParam Integer length, @RequestParam String directorName, @RequestParam String directorSurname)  {
         Movie movie = movieRepository.findByNameLikeIgnoreCase(name);
+        Movie savedMovie;
         if ( movie != null) {
             throw new BadRequestException("Il film è già stato inserito");
         }
@@ -41,19 +44,24 @@ public class MovieController {
             movie.setYear(year);
             movie.setLength(length);
         }
-        Director director = directorRepository.findByDirectorSurnameIgnoreCase(directorSurname);
+        Director director = directorRepository.findBySurnameIgnoreCase(directorSurname);
         if (  director != null) {
             movie.setDirector(director);
-            movieRepository.save(movie);
+            savedMovie = movieRepository.save(movie);
         }
         else{
             director = new Director();
             director.setName(directorName);
             director.setSurname(directorSurname);
             movie.setDirector(director);
-            movieRepository.save(movie);
+            savedMovie = movieRepository.save(movie);
         }
-        return new ResponseEntity(HttpStatus.OK);
+        Integer id = savedMovie.getId();
+        Integer directorId = savedMovie.getDirector().getId();
+        HashMap map = new HashMap();
+        map.put("id", id);
+        map.put("directorId", directorId);
+        return ResponseEntity.ok().body(map);
 
     }
 

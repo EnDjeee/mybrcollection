@@ -1,7 +1,8 @@
-/home/matteo/dev/miscellaneous/mybrcollection/src/main/java/com/matteo/mybrcollection/repository/DirectorRepository.java
-/home/matteo/dev/miscellaneous/mybrcollection/src/main/java/com/matteo/mybrcollection/repository/MovieRepository.java
-/home/matteo/dev/miscellaneous/mybrcollection/src/main/java/com/matteo/mybrcollection/model/Movie.java
-/home/matteo/dev/miscellaneous/mybrcollection/src/main/java/com/matteo/mybrcollection/MyBrCollectionApplication.java
-/home/matteo/dev/miscellaneous/mybrcollection/src/main/java/com/matteo/mybrcollection/exception/BadRequestException.java
-/home/matteo/dev/miscellaneous/mybrcollection/src/main/java/com/matteo/mybrcollection/controller/MovieController.java
-/home/matteo/dev/miscellaneous/mybrcollection/src/main/java/com/matteo/mybrcollection/model/Director.java
+/home/matteo/dev/miscellaneous/mybrcollection/movie-service/src/main/java/com/matteo/mybrcollection/model/Movie.java
+/home/matteo/dev/miscellaneous/mybrcollection/movie-service/src/main/java/com/matteo/mybrcollection/security/WebMvcConfig.java
+/home/matteo/dev/miscellaneous/mybrcollection/movie-service/src/main/java/com/matteo/mybrcollection/repository/DirectorRepository.java
+/home/matteo/dev/miscellaneous/mybrcollection/movie-service/src/main/java/com/matteo/mybrcollection/controller/MovieController.java
+/home/matteo/dev/miscellaneous/mybrcollection/movie-service/src/main/java/com/matteo/mybrcollection/MyBrCollectionApplication.java
+/home/matteo/dev/miscellaneous/mybrcollection/movie-service/src/main/java/com/matteo/mybrcollection/model/Director.java
+/home/matteo/dev/miscellaneous/mybrcollection/movie-service/src/main/java/com/matteo/mybrcollection/repository/MovieRepository.java
+/home/matteo/dev/miscellaneous/mybrcollection/movie-service/src/main/java/com/matteo/mybrcollection/exception/BadRequestException.java

@@ -6,5 +6,5 @@ import com.matteo.mybrcollection.model.Director;
 public interface DirectorRepository extends CrudRepository<Director, Integer> {
 
     Director findByNameLikeIgnoreCase(String name);
-    Director findByDirectorSurnameIgnoreCase(String surname);
+    Director findBySurnameIgnoreCase(String surname);
 }
