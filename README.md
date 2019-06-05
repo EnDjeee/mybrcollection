@@ -12,7 +12,7 @@ A simple web-app that helps me manage my bluray collection. It's structured as t
 
 ## Run
 
-1. git clone https://github.com/EnDjeee/mybrcollection
+1. git clone 
 2. cd .../mybrcollection
 3. docker-compose up
 
