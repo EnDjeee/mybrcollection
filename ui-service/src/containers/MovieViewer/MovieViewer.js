@@ -13,58 +13,89 @@ class MovieViewer extends Component {
     
     render (){
 
-        let data = this.props.mv;
-        /*let movies = data.map( m => {
-            return <li key={m.id}>{m.name}</li>
-        })*/
-        let count = this.props.count;
-        if(this.props.search != "") {
-            let lowerCaseSearch = this.props.search.toLowerCase();
+        let movies = this.props.mv;
+        let moviesCount = this.props.count;
+        if(this.isSearchFieldNotEmpty()) {
+            let searchKeyword = this.props.search.toLowerCase();
+
             if(this.props.searchType === "movie") {
-                data = data.filter( movie => {
-                    let lowerCaseMovieName = movie.name.toLowerCase();
-                    return lowerCaseMovieName.indexOf(lowerCaseSearch) !== -1;
-                })
+                movies = this.searchMoviesByMovieName(movies, searchKeyword);
             }
             else {
-                data = data.filter( movie => {
-                    let lowerCaseDirectorSurname = movie.director.surname.toLowerCase();
-                    return lowerCaseDirectorSurname.indexOf(lowerCaseSearch) !== -1;
-                })
-                count = data.length
+                movies = this.searchMoviesByDirectorName(movies, searchKeyword);
+                moviesCount = movies.length
+                
             }
         }
-        if(this.props.active !== "") {
-            if(this.props.active === "length"){
-                if(this.props.direction === "asc") {
-                    data.sort((a, b) => {
-                        return a.length - b.length
-                    })
-                }
-                else {
-                    data.sort((a, b) => {
-                        return b.length - a.length
-                    })
-                }
+        if(this.isTableAttributeClicked()) {
+            let tableAttributeClicked = this.props.active;
+
+            if(tableAttributeClicked === "length"){
+                movies = this.sortMoviesByMovieLength(movies);
             }
             else {
-                if(this.props.direction === "asc") {
-                    data.sort((a, b) => {
-                        return a.year- b.year
-                    })
-                }
-                else {
-                    data.sort((a, b) => {
-                        return b.year - a.year
-                    })
-                }
+                movies = this.sortMoviesByMovieYear(movies);
             }
         }
         return (
             <div>
-                <MyTable sort={this.props.setSort} active={this.props.active} direction={this.props.direction} data={data} deleteMovie={this.props.deleteMovie} count={count}/>
+                <MyTable sort={this.props.setSort} active={this.props.active} direction={this.props.direction} data={movies} deleteMovie={this.props.deleteMovie} count={moviesCount}/>
             </div>
         );
+    }
+
+    isSearchFieldNotEmpty = () => {
+        return this.props.search != "";
+    }
+
+    searchMoviesByMovieName = (movies, movieName)  => {
+        movies = movies.filter( movie => {
+            let lowerCaseMovieName = movie.name.toLowerCase();
+            return lowerCaseMovieName.indexOf(movieName) !== -1;
+        })
+        return movies;
+    }
+
+    searchMoviesByDirectorName = (movies, directorName) => {
+        movies = movies.filter( movie => {
+            let lowerCaseDirectorSurname = movie.director.surname.toLowerCase();
+            return lowerCaseDirectorSurname.indexOf(directorName) !== -1;
+        })
+        return movies;
+    }
+
+    isTableAttributeClicked = () => {
+        return this.props.active !== "";
+    }
+
+    sortMoviesByMovieLength = (movies) => {
+        if(this.props.direction === "asc") {
+            movies.sort((a, b) => {
+                return a.length - b.length
+            })
+            return movies;
+        }
+        else {
+            movies.sort((a, b) => {
+                return b.length - a.length
+            })
+            return movies;
+        }
+    }
+
+    sortMoviesByMovieYear = (movies) => {
+        if(this.props.direction === "asc") {
+            movies.sort((a, b) => {
+                return a.year- b.year
+            })
+            return movies;
+        }
+        else {
+            movies.sort((a, b) => {
+                return b.year - a.year
+            })
+            return movies;
+        }
     }
 }
 
